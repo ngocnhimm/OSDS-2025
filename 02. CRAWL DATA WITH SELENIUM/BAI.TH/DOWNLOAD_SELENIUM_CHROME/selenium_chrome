@@ -1,0 +1,15 @@
+Name: selenium
+Version: 4.38.0
+Summary: Official Python bindings for Selenium WebDriver
+Home-page: https://www.selenium.dev
+Author: 
+Author-email: 
+License: Apache-2.0
+Location: /opt/anaconda3/lib/python3.12/site-packages
+Requires: certifi, trio, trio-websocket, typing_extensions, urllib3, websocket-client
+Required-by: 
+
+(base) admin@Ngoc-Nhim ~ % ls /Applications | grep "Chrome"
+
+Google Chrome.app
+(base) admin@Ngoc-Nhim ~ % 
