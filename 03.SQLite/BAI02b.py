@@ -3,12 +3,10 @@ import pandas as pd
 
 DB_FILE = 'Painters_Data_Limited.db'
 
-# 1. Kết nối DB (không xóa, không cào lại)
+# Kết nối DB (không xóa, không cào lại)
 conn = sqlite3.connect(DB_FILE)
 
-#########################
-# A. Thống kê & Toàn cục
-#########################
+
 
 # 1. Đếm tổng số hoạ sĩ
 sql1 = "SELECT COUNT (*) AS total_painters FROM painters_infor "
@@ -46,7 +44,7 @@ df6 = pd.read_sql_query(sql6, conn)
 print("Hiển thị tên của các hoạ sĩ không có quốc tịch")
 print(df6)
 
-#7 7. Tìm và hiển thị tên của những họa sĩ có cả thông tin ngày sinh và ngày mất (không rỗng).
+#7. Tìm và hiển thị tên của những họa sĩ có cả thông tin ngày sinh và ngày mất (không rỗng).
 sql7 = "SELECT name, birth, death FROM painters_infor WHERE birth IS NOT NULL AND birth <> ' ' AND death IS NOT NULL AND death <> '' "
 df7 = pd.read_sql_query(sql7, conn)
 print("Hiển thị tên của những hoạ sĩ có cả thông tin sinh vaf mất")
@@ -58,3 +56,14 @@ df8 = pd.read_sql_query(sql8, conn)
 print("Hiển thị tất cả thông tin của hoạ sĩ chứa tư khoá Fales")
 print(df8)
 
+#9. Sắp xếp và hiển thị tên của tất cả họa sĩ theo thứ tự bảng chữ cái (A-Z)
+sql9 = "SELECT name FROM painters_infor ORDER BY name ASC "
+df9 = pd.read_sql_query(sql9,conn)
+print("Hiển thị")
+print(df9)
+
+#10. Nhóm và đếm số lượng họa sĩ theo từng quốc tịch
+sql10 = " SELECT nationality, COUNT(*) AS painter_count FROM painters_infor GROUP BY nationality ORDER BY painter_count DESC "
+df10 = pd.read_sql_query(sql10, conn)
+print("Hiển thị")
+print(df10)
